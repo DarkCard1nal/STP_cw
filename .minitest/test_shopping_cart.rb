@@ -38,6 +38,9 @@ class TestShoppingCart < Minitest::Test
 		assert_nil(@cart.find_name(nil), 'cart found a nonexistent nil')
 		assert_kind_of(Hash, @cart.find_name('Product1'), 'cart not found Product1')
 		assert_kind_of(Hash, @cart.find_name('product2'), 'cart not found Product2')
+		hash1 = @cart.find_name('Product1')
+		hash1[:price] = 4
+		refute_equal(hash1, @cart.find_name('Product1'), 'broken encapsulation when issuing search results Product1')
 	end
 
 	def test_sort
@@ -67,8 +70,8 @@ class TestShoppingCart < Minitest::Test
 		@cart.set('Product3', 3)
 		@cart.set('Product2', 2.4, 2)
 		@cart.set('Product1', 1)
-		assert_equal("ShoppingCart: \n" \
-						" № | name | price | count\n" \
+		assert_equal("ShoppingCart: \n " \
+						"№ | name | price | count\n" \
 						"1 | Product3 | 3 | 1\n" \
 						"2 | Product2 | 2.4 | 2\n" \
 						"3 | Product1 | 1 | 1\n" \
