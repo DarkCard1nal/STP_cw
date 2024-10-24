@@ -89,11 +89,71 @@ Stores an array of hashes in the form
 ### Usage (examples_shopping_cart.rb):
 
 ```ruby
+# frozen_string_literal: true
 
+require_relative 'shopping_cart'
+
+cart = ShoppingCart.new
+
+cart.set('Product1', 1)
+
+puts("size: #{cart.size}")
+puts(cart.to_string)
+puts
+
+find = cart.find_name('product1')
+if find.nil?
+	cart.set('product1', 0)
+else
+	cart.set(find[:name], find[:price], find[:count] + 1)
+end
+
+puts("size: #{cart.size}")
+puts(cart.to_string)
+puts
+
+cart.set('product3', 3, 1)
+cart.set('product2', 2, 2)
+cart.set('product1', 1.1)
+
+puts("sum: #{cart.sum}")
+puts("size: #{cart.size}")
+puts(cart.to_string)
+puts
+
+cart.sort
+puts(cart.to_string)
 ```
 
 **Outputs:**
 
 ```shell
+> ruby examples_shopping_cart.rb
+size: 1
+ShoppingCart:
+ № | name | price | count
+1 | Product1 | 1 | 1
+sum: 1
 
+size: 1
+ShoppingCart:
+ № | name | price | count
+1 | Product1 | 1 | 2
+sum: 2
+
+sum: 8.1
+size: 3
+ShoppingCart:
+ № | name | price | count
+1 | product1 | 1.1 | 1
+2 | product3 | 3 | 1
+3 | product2 | 2 | 2
+sum: 8.1
+
+ShoppingCart:
+ № | name | price | count
+1 | product1 | 1.1 | 1
+2 | product2 | 2 | 2
+3 | product3 | 3 | 1
+sum: 8.1
 ```
