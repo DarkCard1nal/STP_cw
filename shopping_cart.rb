@@ -50,7 +50,7 @@ class ShoppingCart
 		nil
 	end
 
-	# The method sorts the cart list by name case insensitive
+	# The method returns the total price of all items in the cart
 	def sum
 		return 0 if @cart.empty?
 
@@ -80,7 +80,7 @@ class ShoppingCart
 		num
 	end
 
-	# The static method checks if name is a String, returns true if it is a String, or false.
+	# The static method checks if name is a String, returns true if it is a String, or false
 	def self.name_correct?(name)
 		return true if name.is_a?(String)
 

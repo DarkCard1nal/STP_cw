@@ -24,7 +24,7 @@ module ArrayAverageValue
 		average_universal(numbers, numbers.size)
 	end
 
-	# Universal method for the average value of array elements,
+	# Universal private method for the average value of array elements,
 	# searches for the sum of array elements and divides by the number of array_size,
 	# if the array is empty returns 0, does not check array elements
 	def self.average_universal(array, array_size = array.size)
