@@ -4,7 +4,7 @@ require 'minitest/autorun'
 require_relative '../array_average_value'
 
 # Testing module ArrayAverageValue
-class TestTask < Minitest::Test
+class TestArrayAverageValue < Minitest::Test
 	def test_average
 		assert_equal(0, ArrayAverageValue.average([]), 'empty array')
 		assert_equal(0, ArrayAverageValue.average([0]), '0 array')
